@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "../../../bootcamp/challenges/tech-blog"
+		},
+		{
+			"path": "../config"
+		},
+		{
+			"path": "../controllers"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../public"
+		},
+		{
+			"path": "../routes"
+		},
+		{
+			"path": "../seeds"
+		},
+		{
+			"path": "../utils"
+		},
+		{
+			"path": "../views"
+		}
+	],
+	"settings": {}
+}
