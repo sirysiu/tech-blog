@@ -1,27 +1,30 @@
-const signupFormHandler = async (event) => {
+const submitButton = document.querySelector("#submit");
+const username = document.querySelector("#username");
+const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+
+const submitted = async (event) => {
+    console.log(email.value, password.value);
     event.preventDefault();
-  
-    const user_name = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-  
-    // Unsure of this part
-    if (user_name && email && password) {
-      const response = await fetch('/api/users', {
+
+    let bodyData = {
+        "name": username.value,
+        "email": email.value,
+        "password": password.value,
+    };
+
+    fetch('http://localhost:3001/api/users', {
         method: 'POST',
-        body: JSON.stringify({ user_name, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to sign up');
-        console.error('Failed to sign up:', response.statusText);
-      }
-    }
-  };
-  
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyData)
+    })
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)))
+};
+
+// submitButton.addEventListener("click", submitted); 
+document
+.addEventListener('submit', submitted);
